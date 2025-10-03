@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Satisfaction Survey</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://www.gstatic.com/firebasejs/12.1.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/12.1.0/firebase-database-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/12.1.0/firebase-auth-compat.js"></script>
+</head>
+<body>
+  <!-- Intro Page -->
+  <div id="page-intro" class="page">
+    <div class="intro-box">
+      <h2><u><b>Instructions</b></u></h2>
+      <p>Please select the option that best reflects your satisfaction.</p>
+      <p><img src="Level.png" alt="Satisfaction Level" style="max-width:100%; height:auto;"></p>
+      <button class="start-btn" onclick="showPage('page-survey')">Start</button>
+    </div>
+  </div>
+
+  <!-- Survey Page -->
+  <div id="page-survey" class="page hidden">
+    <div class="survey-box">
+      <h1>Satisfaction Survey</h1>
+      <form id="surveyForm">
+
+        <!-- Questions 1-7 -->
+        <div class="question" data-q="1">
+          <p>1. The program is easy to use and not complicated.</p>
+          <div class="options-row">
+            <div class="option" data-value="1" title="Very Low"><img src="น้อยที่สุด.png" alt="Very Low"></div>
+            <div class="option" data-value="2" title="Low"><img src="น้อย.png" alt="Low"></div>
+            <div class="option" data-value="3" title="Medium"><img src="ปานกลาง.png" alt="Medium"></div>
+            <div class="option" data-value="4" title="High"><img src="มาก.png" alt="High"></div>
+            <div class="option" data-value="5" title="Very High"><img src="มากที่สุด.png" alt="Very High"></div>
+          </div>
+          <input type="hidden" name="q1" class="answer-input">
+        </div>
+
+        <div class="question" data-q="2">
+          <p>2. The images or information are easy to understand.</p>
+          <div class="options-row">
+            <div class="option" data-value="1" title="Very Low"><img src="น้อยที่สุด.png" alt="Very Low"></div>
+            <div class="option" data-value="2" title="Low"><img src="น้อย.png" alt="Low"></div>
+            <div class="option" data-value="3" title="Medium"><img src="ปานกลาง.png" alt="Medium"></div>
+            <div class="option" data-value="4" title="High"><img src="มาก.png" alt="High"></div>
+            <div class="option" data-value="5" title="Very High"><img src="มากที่สุด.png" alt="Very High"></div>
+          </div>
+          <input type="hidden" name="q2" class="answer-input">
+        </div>
+
+        <div class="question" data-q="3">
+          <p>3. The language/phrasing is appropriate.</p>
+          <div class="options-row">
+            <div class="option" data-value="1" title="Very Low"><img src="น้อยที่สุด.png" alt="Very Low"></div>
+            <div class="option" data-value="2" title="Low"><img src="น้อย.png" alt="Low"></div>
+            <div class="option" data-value="3" title="Medium"><img src="ปานกลาง.png" alt="Medium"></div>
+            <div class="option" data-value="4" title="High"><img src="มาก.png" alt="High"></div>
+            <div class="option" data-value="5" title="Very High"><img src="มากที่สุด.png" alt="Very High"></div>
+          </div>
+          <input type="hidden" name="q3" class="answer-input">
+        </div>
+
+        <div class="question" data-q="4">
+          <p>4. Processing speed is satisfactory.</p>
+          <div class="options-row">
+            <div class="option" data-value="1" title="Very Low"><img src="น้อยที่สุด.png" alt="Very Low"></div>
+            <div class="option" data-value="2" title="Low"><img src="น้อย.png" alt="Low"></div>
+            <div class="option" data-value="3" title="Medium"><img src="ปานกลาง.png" alt="Medium"></div>
+            <div class="option" data-value="4" title="High"><img src="มาก.png" alt="High"></div>
+            <div class="option" data-value="5" title="Very High"><img src="มากที่สุด.png" alt="Very High"></div>
+          </div>
+          <input type="hidden" name="q4" class="answer-input">
+        </div>
+
+        <div class="question" data-q="5">
+          <p>5. Accessibility (e.g., can use on mobile devices) is convenient.</p>
+          <div class="options-row">
+            <div class="option" data-value="1" title="Very Low"><img src="น้อยที่สุด.png" alt="Very Low"></div>
+            <div class="option" data-value="2" title="Low"><img src="น้อย.png" alt="Low"></div>
+            <div class="option" data-value="3" title="Medium"><img src="ปานกลาง.png" alt="Medium"></div>
+            <div class="option" data-value="4" title="High"><img src="มาก.png" alt="High"></div>
+            <div class="option" data-value="5" title="Very High"><img src="มากที่สุด.png" alt="Very High"></div>
+          </div>
+          <input type="hidden" name="q5" class="answer-input">
+        </div>
+
+        <div class="question" data-q="6">
+          <p>6. Help or guidance provided in the system is sufficient.</p>
+          <div class="options-row">
+            <div class="option" data-value="1" title="Very Low"><img src="น้อยที่สุด.png" alt="Very Low"></div>
+            <div class="option" data-value="2" title="Low"><img src="น้อย.png" alt="Low"></div>
+            <div class="option" data-value="3" title="Medium"><img src="ปานกลาง.png" alt="Medium"></div>
+            <div class="option" data-value="4" title="High"><img src="มาก.png" alt="High"></div>
+            <div class="option" data-value="5" title="Very High"><img src="มากที่สุด.png" alt="Very High"></div>
+          </div>
+          <input type="hidden" name="q6" class="answer-input">
+        </div>
+
+        <div class="question" data-q="7">
+          <p>7. Overall satisfaction with the program.</p>
+          <div class="options-row">
+            <div class="option" data-value="1" title="Very Low"><img src="น้อยที่สุด.png" alt="Very Low"></div>
+            <div class="option" data-value="2" title="Low"><img src="น้อย.png" alt="Low"></div>
+            <div class="option" data-value="3" title="Medium"><img src="ปานกลาง.png" alt="Medium"></div>
+            <div class="option" data-value="4" title="High"><img src="มาก.png" alt="High"></div>
+            <div class="option" data-value="5" title="Very High"><img src="มากที่สุด.png" alt="Very High"></div>
+          </div>
+          <input type="hidden" name="q7" class="answer-input">
+        </div>
+
+        <button type="submit" class="submit-btn">Submit</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Thank You Page -->
+  <div id="page-thankyou" class="page hidden">
+    <div class="thankyou-box">
+      <img src="ขอบคุณ.png" alt="Thank You" class="thankyou-img">
+      <div class="thankyou-text" style="margin-top:16px; font-size:16px; line-height:1.5; text-align:center; color:#000;">
+        Your assessment of the working posture this time<br>
+        is like a small guidebook 📘<br>
+        to help you work more comfortably.<br><br>
+        💆‍♂️ Reduce muscle pain<br>
+        ⚡ Enhance work efficiency<br>
+        🛡️ Take care of your health safely ✨
+      </div>
+      <a href="https://linkbio.co/7090201fGSN9z" target="_blank" class="back-btn">Back to Home</a>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
